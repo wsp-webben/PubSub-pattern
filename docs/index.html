@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>PubSub</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .pubsub {
+      max-width: 500px;
+      padding: 10px;
+      border: 1px solid #333;
+    }
+
+    .pubsub__columns {
+      display: flex;
+      margin: 10px 0;
+    }
+
+    .pubsub__columns--sb {
+      justify-content: space-between;
+    }
+
+    .pubsub__input {
+      margin: 5px;
+      padding: 10px;
+    }
+
+    .pubsub__input--wide {
+      flex-grow: 1;
+    }
+
+    .pubsub__subscribers {
+      margin-top: 10px;
+      column-count: 2;
+    }
+
+    .pubsub__label {
+      display: block;
+      padding: 5px 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+
+      transition: all 0.3s;
+    }
+
+    .pubsub__label:hover {
+      background-color: #eee;
+    }
+
+    .pubsub__button {
+      width: 100%;
+      margin: 5px;
+      height: 30px;
+      border: 0;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: all 0.2s;
+    }
+
+    .pubsub__button:hover {
+      background-color: #333;
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Patterns: PubSub</h1>
+  
+  <form class="pubsub">
+    <div class="pubsub__columns pubsub__columns--sb">
+      <input class="pubsub__input" name="room" placeholder="Input room number:" required>
+      <input class="pubsub__input pubsub__input--wide" name="message" placeholder="Input message to publish:">
+    </div>
+    <div class="pubsub__subscribers js-subscribers">
+      
+    </div>
+    <div class="pubsub__columns">
+      <label class="pubsub__label">
+        Subscribe
+        <input type="radio" class="pubsub__radio" name="action" value="sub" checked>
+      </label>
+      <label class="pubsub__label">
+        Publish
+        <input type="radio" class="pubsub__radio" name="action" value="pub">
+      </label>
+    </div>
+    <button class="pubsub__button" value="publish" type="submit">Publish</button>
+  </form>
+
+  <template id="subscriber-checkox">
+    <label class="pubsub__label">
+      <input class="js-check" name="subscriber" type="checkbox">
+      <span class="pubsub__name js-name"></span>
+    </label>
+  </template>
+
+  <script type="text/javascript" src="bundle.js"></script>
+</body>
+</html>
