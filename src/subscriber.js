@@ -3,7 +3,7 @@ export default class Subscriber {
     this.name = name;
   }
 
-  getPublication() {
-    console.log(`${this.name}'s read his letter`);
+  getPublication(data) {
+    console.log(`${this.name} has got letter: ${data}`);
   }
 }

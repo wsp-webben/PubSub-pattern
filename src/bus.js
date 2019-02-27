@@ -5,17 +5,18 @@ export default class Bus {
 
   publish(room, data) {
     // Check if the room exist
-    if (!this.rooms[room]) {
-      this.rooms[room].forEach(sub => sub.getPublication());
+    if (this.rooms[room]) {
+      this.rooms[room].forEach(sub => sub.getPublication(data));
     }
   }
 
-  subscriber(room, sub) {
+  subscribe(room, sub) {
     // Create room, if it hasn't been created yet
     if (!this.rooms[room]) {
       this.rooms[room] = new Set();
     }
 
     this.rooms[room].add(sub);
+    console.log(`${sub.name} subscribed to room ${room}` );
   }
 }

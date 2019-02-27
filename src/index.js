@@ -31,10 +31,20 @@ names.map(name => {
 subForm.querySelector('.js-subscribers').appendChild(subscribersContainer);
 subForm.onsubmit = submitForm;
 
+const bus = new Bus();
+
 function submitForm(e) {
   e.preventDefault();
-  const data = new FormData(this);
-  console.log(parseForm(data));
+  const data = parseForm( new FormData(this) );
+  if (data) {
+    if (data.action === 'sub') {
+      data.subs.forEach( subName => bus.subscribe(data.room, new Subscriber(subName)));
+    } else {
+      bus.publish(data.room, data.message);
+    }
+  } else {
+    console.log('Not enough data');
+  }
   this.reset();
 }
 
@@ -60,3 +70,4 @@ function parseForm(formdata) {
 
   return data;
 }
+
