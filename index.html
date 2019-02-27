@@ -16,6 +16,10 @@
 
     .pubsub__columns {
       display: flex;
+      margin: 10px 0;
+    }
+
+    .pubsub__columns--sb {
       justify-content: space-between;
     }
 
@@ -35,7 +39,7 @@
 
     .pubsub__label {
       display: block;
-      padding: 5px;
+      padding: 5px 10px;
       font-size: 16px;
       cursor: pointer;
       border-radius: 5px;
@@ -48,7 +52,7 @@
     }
 
     .pubsub__button {
-      flex-grow: 1;
+      width: 100%;
       margin: 5px;
       height: 30px;
       border: 0;
@@ -67,19 +71,34 @@
 <body>
   <h1>Patterns: PubSub</h1>
   
-  <div class="pubsub">
-    <div class="pubsub__columns">
-      <input class="pubsub__input" placeholder="Input room number:">
-      <input class="pubsub__input pubsub__input--wide" placeholder="Input message to publish:">
+  <form class="pubsub">
+    <div class="pubsub__columns pubsub__columns--sb">
+      <input class="pubsub__input" name="room" placeholder="Input room number:" required>
+      <input class="pubsub__input pubsub__input--wide" name="message" placeholder="Input message to publish:">
     </div>
-    <div class="pubsub__subscribers">
+    <div class="pubsub__subscribers js-subscribers">
       
     </div>
     <div class="pubsub__columns">
-      <button class="pubsub__button js-subscribe">Subscribe</button>
-      <button class="pubsub__button js-publish">Publish</button>
+      <label class="pubsub__label">
+        Subscribe
+        <input type="radio" class="pubsub__radio" name="action" value="sub" checked>
+      </label>
+      <label class="pubsub__label">
+        Publish
+        <input type="radio" class="pubsub__radio" name="action" value="pub">
+      </label>
     </div>
-  </div>
+    <button class="pubsub__button" value="publish" type="submit">Publish</button>
+  </form>
+
+  <template id="subscriber-checkox">
+    <label class="pubsub__label">
+      <input class="js-check" name="subscriber" type="checkbox">
+      <span class="pubsub__name js-name"></span>
+    </label>
+  </template>
+
   <script type="text/javascript" src="dist/bundle.js"></script>
 </body>
 </html>
