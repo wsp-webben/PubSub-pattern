@@ -1,13 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>PubSub</title>
+  <meta charset="utf-8">
+  <title>PubSub</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .pubsub {
+      max-width: 500px;
+      padding: 10px;
+      border: 1px solid #333;
+    }
+
+    .pubsub__columns {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .pubsub__input {
+      margin: 5px;
+      padding: 10px;
+    }
+
+    .pubsub__input--wide {
+      flex-grow: 1;
+    }
+
+    .pubsub__subscribers {
+      margin-top: 10px;
+      column-count: 2;
+    }
+
+    .pubsub__label {
+      display: block;
+      padding: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+
+      transition: all 0.3s;
+    }
+
+    .pubsub__label:hover {
+      background-color: #eee;
+    }
+
+    .pubsub__button {
+      flex-grow: 1;
+      margin: 5px;
+      height: 30px;
+      border: 0;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: all 0.2s;
+    }
+
+    .pubsub__button:hover {
+      background-color: #333;
+      color: #fff;
+    }
+
+  </style>
 </head>
 <body>
-    <h1>Patterns: PubSub</h1>
-    
-    
-    <script type="text/javascript" src="dist/bundle.js"></script>
+  <h1>Patterns: PubSub</h1>
+  
+  <div class="pubsub">
+    <div class="pubsub__columns">
+      <input class="pubsub__input" placeholder="Input room number:">
+      <input class="pubsub__input pubsub__input--wide" placeholder="Input message to publish:">
+    </div>
+    <div class="pubsub__subscribers">
+      
+    </div>
+    <div class="pubsub__columns">
+      <button class="pubsub__button js-subscribe">Subscribe</button>
+      <button class="pubsub__button js-publish">Publish</button>
+    </div>
+  </div>
+  <script type="text/javascript" src="dist/bundle.js"></script>
 </body>
 </html>
