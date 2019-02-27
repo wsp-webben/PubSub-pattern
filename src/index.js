@@ -29,3 +29,34 @@ names.map(name => {
 });
 
 subForm.querySelector('.js-subscribers').appendChild(subscribersContainer);
+subForm.onsubmit = submitForm;
+
+function submitForm(e) {
+  e.preventDefault();
+  const data = new FormData(this);
+  console.log(parseForm(data));
+  this.reset();
+}
+
+function parseForm(formdata) {
+  const data = {
+    action: formdata.get('action'),
+    room: formdata.get('room'),
+  }
+
+  if (data.action === 'sub') {
+    const subs = formdata.getAll('subscriber');
+    if (!subs.length) {
+      return false;
+    }
+    data.subs = subs;
+  } else {
+    const message = formdata.get('message').trim();
+    if (!message) {
+      return false;
+    }
+    data.message = message;
+  }
+
+  return data;
+}
